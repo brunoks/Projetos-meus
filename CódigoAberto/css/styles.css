@@ -1,0 +1,57 @@
+.layout{
+  display: inline-block;
+}
+
+
+input[type='file'] {
+  display: none
+}
+
+@ media screen and(max-widht:1920px){
+  img {
+    max-width: 100%;
+  }
+
+}
+
+#background {
+display: block;
+  background-color: #F0FFFF;
+  width: 100%;
+  height: 1080px;
+}
+#titulo{
+  position: relative;
+}
+#busca{
+  padding-top: 10px;
+  width: 80%;
+  font-size: 150%;
+  color: #808080;
+}
+
+#botao {
+  background-color: #302be7;
+  color: white;
+  font-size: 120%;
+  width: 200px;
+  height: 40px;
+  text-align: center;
+}
+#import {
+  color: white;
+  font-size: 120%;
+}
+#edit {
+  background-color: #302be7;
+  color: white;
+  height: 40px;
+  font-size: 120%;
+  width: 200px;
+
+}
+body, input {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  color: #FFFAFA;
+}

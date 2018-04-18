@@ -1,0 +1,230 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700,900");
+@import url("font-awesome.min.css");
+
+	html, body, div, h1, h2, h3, h4, h5, h6, p, a, strong, center, form, label, header, menu, nav {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+	}
+
+		 header, nav {
+			display: block;
+		}
+
+		body, input {
+			font-family: 'Source Sans Pro', sans-serif;
+			font-weight: 400;
+			color: #FFFAFA;
+		}
+
+			h1, h2, h3, h4, h5, h6 {
+				font-weight: 700;
+				color: #484d55;
+			}
+			h1, h2, h3, h4, h5, h6{
+				filter: drop-shadow(15px 22px 50px #000000)
+			}
+
+				h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+					color: inherit;
+					text-decoration: none;
+				}
+
+					strong, b {
+						font-weight: 700;
+						color: #484d55;
+					}
+
+						.wrapper {
+							position: relative;
+						}
+
+								.wrapper .title {
+									position: absolute;
+									top: 0;
+									left: 50%;
+									text-align: center;
+									text-transform: uppercase;
+									display: block;
+									font-weight: 700;
+								}
+
+								#header-wrapper {
+
+									background: url("../../images/banner.jpg") center center;
+									background-size: cover;
+								}
+
+									#logo h1 {
+										font-weight: 900;
+										text-transform: uppercase;
+										color: #fff;
+									}
+
+										#contato {
+											text-align: center;
+										}
+
+											#contato ul {
+												display: inline-block;
+												border-radius: 0.35em;
+												box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.05);
+												color: #aaa;
+												color: rgba(255, 255, 255, 0.5);
+												}
+
+														#contato a:hover {
+															color: #fff;
+														}
+
+	@media screen and (min-width: 737px) {
+
+			body, input {
+				font-size: 13pt;
+				line-height: 1.75em;
+				letter-spacing: 0.025em;
+			}
+
+				.wrapper {
+					padding: 1em 0 0.4em 0;
+				}
+
+					.wrapper .title {
+						font-size: 0.9em;
+						width: 25em;
+						height: 3.25em;
+						line-height: 3.25em;
+						margin-left: -12.5em;
+					}
+
+						#header {
+							position: relative;
+						}
+							.homepage #header {
+								padding: 22em 0;
+							}
+
+								#logo {
+									position: absolute;
+									height: 5em;
+									top: 50%;
+									left: 0;
+									width: 100%;
+									text-align: center;
+									margin-top: -0.5em;
+								}
+
+									.homepage #logo {
+										margin: 0;
+									}
+
+			#logo h1 {
+				font-size: 5em;
+				letter-spacing: 0.30em;
+				filter: blur(5px);
+			}
+				#logo{ filter: drop-shadow(15px 22px 50px #000000)}
+
+					#logo p {
+						margin: 1.25em 0 0 0;
+						display: block;
+						letter-spacing: 0.2em;
+						font-size: 0.9em;
+					}
+
+							#nav {
+								position: absolute;
+								display: block;
+								top: 1em;
+								left: 0;
+								width: 100%;
+								text-align: center;
+							}
+
+								#nav > ul {
+									display: inline-block;
+									border-radius: 0.35em;
+									box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 1);
+									padding: 0 1.5em 0 1.5em;
+								}
+
+									#nav > ul > li {
+										display: inline-block;
+										text-align: center;
+										padding: 0 1.5em 0 1.5em;
+									}
+
+		#nav > ul > li > a, #nav > ul > li > span {
+			display: block;
+			color: #eee;
+			color: rgba(255, 255, 255, 0.75);
+			text-transform: uppercase;
+			text-decoration: none;
+			font-size: 0.7em;
+			letter-spacing: 0.25em;
+			height: 5em;
+			line-height: 5em;
+			}
+
+				#nav {
+						display: inline-block;
+						border-left: solid 1px #333;
+						border-left-color: rgba(255, 255, 255, 0.05);
+				}
+					#nav ul li {
+						display: inline-block;
+						margin-left: 1em;
+						padding-left: 1em;
+						border-left: solid 1px #333;
+						border-left-color: rgba(255, 255, 255, 0.05);
+					}
+						#nav ul li:first-child {
+							border-left: 0;
+							margin-left: 0;
+							padding-left: 0;
+						}
+			#contato {
+				margin: 2em 0 0 0;
+			}
+
+				#contato ul {
+					padding: 0.75em 2em;
+					font-size: 0.9em;
+				}
+
+					#contato ul li {
+						display: inline-block;
+						margin-left: 1em;
+						padding-left: 1em;
+						border-left: solid 1px #333;
+						border-left-color: rgba(255, 255, 255, 0.05);
+					}
+
+					#contato ul li:first-child {
+						border-left: 0;
+						margin-left: 0;
+						padding-left: 0;
+					}
+
+	}
+
+	@media screen and (max-width: 736px) {
+
+			html, body {
+				overflow-x: hidden;
+			}
+
+				body, input, select, textarea {
+					line-height: 1.5em;
+					font-size: 10.5pt;
+				}
+
+					h2, h3, h4, h5, h6 {
+						font-size: 1.2em;
+						letter-spacing: 0.05em;
+						margin: 0 0 1em 0;
+					}
+	}

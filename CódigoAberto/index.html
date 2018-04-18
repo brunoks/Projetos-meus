@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Visualizador de Dados Abertos </title>
+  <meta charset="utf-8">
+  <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+</head>
+<body>
+
+
+<form name="form_1"  method="get" id="importaDados()">
+  <div id="background" class="container-fluid">
+
+    <div id="titulo" class="wrapper">
+
+        <div class = "layout" id="busca">
+          <input type="text" name="buscar" class="alert alert-secondary" id="busca" placeholder="Informe o nome da Empresa"></input>
+        </div>
+      <br><div class = "layout">
+      <input type="submit" class="btn btn-primary btn-lg" id ="import" onclick="importaDados()" value="Pesquisar"></input>
+
+      <input type="submit" class="btn btn-primary btn-lg" id ="import" value="Importar">
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+<script src="js/jquerys.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>

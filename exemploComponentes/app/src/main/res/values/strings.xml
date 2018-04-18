@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Revenda de Veículos</string>
+    <string name="clientes">Clientes</string>
+    <string name="clientes2">Clientes</string>
+    <string name="cadastro_clientes">Cadastro de Clientes</string>
+    <string name="add_carro">Cadastro de Carros</string>
+    <string name="carros">Carros</string>
+    <string name="cliente">Lista de Clientes</string>
+    <string name="sd">Carro</string>
+    <string name="custos">Custos</string>
+</resources>
