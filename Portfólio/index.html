@@ -6,20 +6,27 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+
 	</head>
 	<body class="homepage">
 
 				<div id="header-wrapper" class="wrapper">
 					<div id="header">
 
-							<div id="logo">
-								<h1><a href="index.html">Bruno Vieira</a></h1>
-							</div>
 
+
+							<div id="minhaDiv" class="console" style="top: 20.5px; left: -57.5px; display: block;">
+								<iframe name="interno" width="800" height="400" src="index.html" onload="ocultar('minhaDiv')"></iframe>
+							</div>
+								<button type="button" onclick="Mudarestado('minhaDiv')">Mostrar / Esconder</button>
+
+								<!-- <div id="logo">
+									<h1><a href="index.html">Bruno Vieira</a></h1>
+								</div> -->
 							<nav id="nav" >
 								<ul>
 									<li><a href="index.html">Home</a></li>
-									<li><a href="index.html">About</a></li>
+									<li><a onclick="Mudarestado('minhaDiv')" >About</a></li>
 									<li><a href="index.html">Portfólio</a></li>
 									<li><a href="index.html">Experimentos</a></li>
 									<li><a href="index.html">Mail</a></li>
@@ -35,8 +42,7 @@
 							</div>
 					</div>
 				</div>
-
-			<script src="assets/js/main.js"></script>
-
+			<script src="assets/js/javascript.js"></script>
+			<script src="assets/js/jquery.js"></script>
 	</body>
 </html>
