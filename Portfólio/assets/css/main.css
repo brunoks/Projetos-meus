@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700,900");
 @import url("font-awesome.min.css");
 
-	html, body, div, h1, h2, h3, h4, h5, h6, p, a, strong, center, form, label, header, menu, nav, iframe {
+	html, body, div, h1, h2, h3, h4, h5, h6, p, a, strong, center, form, label, header, menu, nav {
 		margin: 0;
 		padding: 0;
 		border: 0;
@@ -21,18 +21,17 @@
 				top: 0; bottom: 0;
 				left: 0; right: 0;
 				margin: auto;
-				width: 900px;
-				height: 500px;
+				width: 880px;
+				height: 480px;
 				border: solid 2px (105,105,105,10000);
 				box-shadow: 20px;
 				display: none;
 	    	border: 0.5px solid white;
-				text-shadow: 0px 0px 2px rgba(255, 255, 255, 1), 0px 0px 24px rgba(53,255,97,.6);
+				text-shadow: 0px 0px 2px rgba(255, 255, 255, 1), 0px 0px 24px rgba(0,0,0,.6);
 				background: rgba(230,230,250,0.2);
 				border-radius: 0.35em;
 		}
 		div#title{
-			background: rgba(230,230,250,1.0);
 			width: 100%;
 			border-top-left-radius: 0.35em;
 			border-top-right-radius: 0.35em;
@@ -42,7 +41,6 @@
     	font-weight: bold;
 			user-select: none;
 			cursor: default;
-			font-family: 'Source Sans Pro', sans-serif;
 			color: #495393;
 
 		}
@@ -75,20 +73,6 @@
 			font-weight: 400;
 			color: #FFFAFA;
 		}
-
-			h1, h2, h3, h4, h5, h6 {
-				font-weight: 700;
-				color: #484d55;
-			}
-			h1, h2, h3, h4, h5, h6{
-				filter: drop-shadow(15px 22px 50px #000000)
-			}
-
-				h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-					color: inherit;
-					text-decoration: none;
-				}
-
 					strong, b {
 						font-weight: 700;
 						color: #484d55;
@@ -110,8 +94,8 @@
 
 								#header-wrapper {
 
-									background: url("../../images/banner.jpg") center center;
-									background-size: cover cover;
+									background: url("../../images/banner.jpg") center;
+									background-size: cover;
 								}
 
 									#logo h1 {
@@ -129,17 +113,10 @@
 												border-radius: 0.35em;
 												box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.2);
 												color: #aaa;
-												color: rgba(255, 255, 255, 0.5);
+												color: rgba(0, 0, 0, 1);
 												cursor: default;
 												user-select: none;
 												}
-
-														#contato a:hover {
-															color: #BBCBE8;
-
-															box-shadow: 20px;
-															box-shadow: ;
-														}
 															#nav a:hover {
 																color: black;
 															}
@@ -151,10 +128,6 @@
 				line-height: 1.75em;
 				letter-spacing: 0.025em;
 			}
-
-				.wrapper {
-					padding: 1em 0 0.4em 0;
-				}
 
 					.wrapper .title {
 						font-size: 0.9em;
@@ -168,7 +141,7 @@
 							position: relative;
 						}
 							.homepage #header {
-								padding: 22em 0;
+								padding: 26.8em 0;
 							}
 
 								#logo {
@@ -183,6 +156,7 @@
 
 									.homepage #logo {
 										margin: 0;
+										position: fixed;
 									}
 
 			#logo h1 {
@@ -258,12 +232,13 @@
 							padding-left: 0;
 						}
 			#contato {
-				margin: 2em 0 0 0;
+				
 			}
 
 				#contato ul {
 					padding: 0.75em 2em;
 					font-size: 0.9em;
+					background-color: rgba(255, 255, 255, 0.5);
 				}
 
 					#contato ul li {
@@ -271,7 +246,7 @@
 						margin-left: 1em;
 						padding-left: 1em;
 						border-left: solid 1px #333;
-						border-left-color: rgba(255, 255, 255, 0.05);
+						border-left-color: rgba(255, 255, 255, 0.5);
 					}
 
 					#contato ul li:first-child {
