@@ -17,22 +17,63 @@
 									<h1><a href="index.html">Bruno Vieira</a></h1>
 								</div> -->
 
+								<div id="logo" style="top: 424.5px; left: 600px;">Bruno Vieira</div>
+
 								<div class="popup"  id="popup" >
 									<div id="title">
-										Menu
-										<div id="close"onclick="Mudarestado('popup')">X</a>
+										Home
+										<div id="close"onclick="closed('popup')">x</a>
 
 										</div>
 									</div>
 								</div>
+								<div class="popup"  id="popup2" >
+									<div id="title">
+										About
+										<div id="close"onclick="closed('popup2')">x</a>
+
+										</div>
+									</div>
+								</div>
+								<div class="popup"  id="popup3" >
+									<div id="title">
+										Portfólio
+										<div id="close"onclick="closed('popup3')">x</a>
+
+										</div>
+									</div>
+								</div>
+								<div class="popup"  id="popup4" >
+									<div id="title">
+										Experimentos
+										<div id="close"onclick="closed('popup4')">x</a>
+
+										</div>
+									</div>
+								</div>
+								<div class="popup"  id="popup5" >
+									<div id="title">
+										Mail
+										<div id="close"onclick="closed('popup5')">x</a>
+
+										</div>
+									</div>
+								</div>
+								 <!-- @extends('css.principalPop')
+
+								@section('Menu', 'Menu')
+
+								@section('conteudo')
+									dsaodjisajdisa
+								@ednsection('') -->
 
 							<nav id="nav" >
 								<ul>
-									<li><a onclick="Mudarestado('popup')">Home</a></li>
-									<li><a onclick="Mudarestado('popup')" >About</a></li>
-									<li><a onclick="Mudarestado('popup')">Portfólio</a></li>
-									<li><a onclick="Mudarestado('popup')">Experimentos</a></li>
-									<li><a onclick="Mudarestado('popup')">Mail</a></li>
+									<li><a onclick="show('popup')">Home</a></li>
+									<li><a onclick="show('popup2')" >About</a></li>
+									<li><a onclick="show('popup3')">Portfólio</a></li>
+									<li><a onclick="show('popup4')">Experimentos</a></li>
+									<li><a onclick="show('popup5')">Mail</a></li>
 								</ul>
 							</nav>
 

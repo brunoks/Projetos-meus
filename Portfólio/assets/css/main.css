@@ -8,6 +8,8 @@
 		font-size: 100%;
 		font: inherit;
 		vertical-align: baseline;
+		font-family: "Courier New", "Liberation Mono", monospace;
+
 	}
 
 		 header, nav {
@@ -19,7 +21,7 @@
 				top: 0; bottom: 0;
 				left: 0; right: 0;
 				margin: auto;
-				width: 1000px;
+				width: 900px;
 				height: 500px;
 				border: solid 2px (105,105,105,10000);
 				box-shadow: 20px;
@@ -27,26 +29,46 @@
 	    	border: 0.5px solid white;
 				text-shadow: 0px 0px 2px rgba(255, 255, 255, 1), 0px 0px 24px rgba(53,255,97,.6);
 				background: rgba(230,230,250,0.2);
+				border-radius: 0.35em;
 		}
 		div#title{
+			background: rgba(230,230,250,1.0);
 			width: 100%;
+			border-top-left-radius: 0.35em;
+			border-top-right-radius: 0.35em;
     	height: 1.500rem;
     	line-height: 1.500rem;
-    	border: 0.5px solid white;
+    	border-bottom: 0.5px solid white;
     	font-weight: bold;
 			user-select: none;
 			cursor: default;
+			font-family: 'Source Sans Pro', sans-serif;
+			color: #495393;
 
 		}
 		div#close {
+
 			height: 100%;
 			width: 1.500rem;
 			text-align: center;
+			vertical-align:middle;
 			border-right: 0.5px solid white;
 			margin-right: 0.500rem;
 			float: left;
-
 		}
+		div#logo {
+    width: 696px;
+    height: 100px;
+    position: fixed;
+    font-size: 90px;
+    opacity: 0.50;
+    z-index: 0;
+    font-weight: bold;
+		user-select: none;
+		cursor: default;
+		color: white;
+		text-decoration: none;
+}
 
 		body, input {
 			font-family: 'Source Sans Pro', sans-serif;
@@ -105,13 +127,18 @@
 											#contato ul {
 												display: inline-block;
 												border-radius: 0.35em;
-												box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.05);
+												box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.2);
 												color: #aaa;
 												color: rgba(255, 255, 255, 0.5);
+												cursor: default;
+												user-select: none;
 												}
 
 														#contato a:hover {
-															color: #fff;
+															color: #BBCBE8;
+
+															box-shadow: 20px;
+															box-shadow: ;
 														}
 															#nav a:hover {
 																color: black;
