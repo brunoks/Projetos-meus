@@ -1,0 +1,283 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700,900");
+@import url("font-awesome.min.css");
+
+	html, body, div, h1, h2, h3, h4, h5, h6, p, a, strong, center, form, label, header, menu, nav {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+		font-family: "Courier New", "Liberation Mono", monospace;
+
+	}
+
+		 header, nav {
+			display: block;
+		}
+
+		.popup{
+				position: fixed;
+				top: 0; bottom: 0;
+				left: 0; right: 0;
+				margin: auto;
+				width: 880px;
+				height: 480px;
+				border: solid 2px (105,105,105,10000);
+				box-shadow: 20px;
+				display: none;
+	    	border: 0.5px solid white;
+				text-shadow: 0px 0px 2px rgba(255, 255, 255, 1), 0px 0px 24px rgba(0,0,0,.6);
+				background: rgba(230,230,250,0.2);
+				border-radius: 0.35em;
+		}
+		div#title{
+			width: 100%;
+			border-top-left-radius: 0.35em;
+			border-top-right-radius: 0.35em;
+    	height: 1.500rem;
+    	line-height: 1.500rem;
+    	border-bottom: 0.5px solid white;
+    	font-weight: bold;
+			user-select: none;
+			cursor: default;
+			color: #495393;
+
+		}
+		div#close {
+
+			height: 100%;
+			width: 1.500rem;
+			text-align: center;
+			vertical-align:middle;
+			border-right: 0.5px solid white;
+			margin-right: 0.500rem;
+			float: left;
+		}
+		div#logo {
+    width: 696px;
+    height: 100px;
+    position: fixed;
+    font-size: 90px;
+    opacity: 0.50;
+    z-index: 0;
+    font-weight: bold;
+		user-select: none;
+		cursor: default;
+		color: white;
+		text-decoration: none;
+}
+
+		body, input {
+			font-family: 'Source Sans Pro', sans-serif;
+			font-weight: 400;
+			color: #FFFAFA;
+		}
+					strong, b {
+						font-weight: 700;
+						color: #484d55;
+					}
+
+						.wrapper {
+							position: relative;
+						}
+
+								.wrapper .title {
+									position: absolute;
+									top: 0;
+									left: 50%;
+									text-align: center;
+									text-transform: uppercase;
+									display: block;
+									font-weight: 700;
+								}
+
+								#header-wrapper {
+
+									background: url("/resources/images/banner.jpg") center;
+									background-size: cover;
+								}
+									#img {
+										position:relative;
+										width: 1%;
+										height: 1%;
+										background-image: #fff url("/resources/images/x.jpg") no-repeat center;
+										background-size: cover;
+									}
+
+									#logo h1 {
+										font-weight: 900;
+										text-transform: uppercase;
+										color: #fff;
+									}
+
+										#contato {
+											text-align: center;
+										}
+
+											#contato ul {
+												display: inline-block;
+												border-radius: 0.35em;
+												box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 0.2);
+												color: #aaa;
+												color: rgba(0, 0, 0, 1);
+												cursor: default;
+												user-select: none;
+												}
+															#nav a:hover {
+																color: black;
+															}
+
+	@media screen and (min-width: 737px) {
+
+			body, input {
+				font-size: 13pt;
+				line-height: 1.75em;
+				letter-spacing: 0.025em;
+			}
+
+					.wrapper .title {
+						font-size: 0.9em;
+						width: 25em;
+						height: 3.25em;
+						line-height: 3.25em;
+						margin-left: -12.5em;
+					}
+
+						#header {
+							position: relative;
+						}
+							.homepage #header {
+								padding: 26.8em 0;
+							}
+
+								#logo {
+									position: absolute;
+									height: 5em;
+									top: 50%;
+									left: 0;
+									width: 100%;
+									text-align: center;
+									margin-top: -0.5em;
+								}
+
+									.homepage #logo {
+										margin: 0;
+										position: fixed;
+									}
+
+			#logo h1 {
+				font-size: 5em;
+				letter-spacing: 0.30em;
+				filter: blur(5px);
+			}
+				#logo{ filter: drop-shadow(15px 22px 50px #000000)}
+
+					#logo p {
+						margin: 1.25em 0 0 0;
+						display: block;
+						letter-spacing: 0.2em;
+						font-size: 0.9em;
+					}
+
+							#nav {
+								position: absolute;
+								display: block;
+								top: 1em;
+								left: 0;
+								width: 100%;
+								text-align: center;
+							}
+
+								#nav > ul {
+									display: inline-block;
+									border-radius: 0.35em;
+									box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 1);
+									padding: 0 1.5em 0 1.5em;
+								}
+
+									#nav > ul > li {
+										display: inline-block;
+										text-align: center;
+										padding: 0 1.5em 0 1.5em;
+									}
+
+		#nav > ul > li > a, #nav > ul > li > span {
+				display: block;
+				color: #eee;
+				color: rgba(255, 255, 255, 0.75);
+				text-transform: uppercase;
+				text-decoration: none;
+				font-size: 0.7em;
+				letter-spacing: 0.25em;
+				height: 5em;
+				line-height: 5em;
+			}
+
+				#nav {
+						display: inline-block;
+						border-left: solid 1px #333;
+						border-left-color: rgba(255, 255, 255, 0.05);
+						cursor: default;
+						-webkit-touch-callout: none;  /* iPhone OS, Safari */
+				    -webkit-user-select: none;    /* Chrome, Safari 3 */
+				    -khtml-user-select: none;     /* Safari 2 */
+				    -moz-user-select: none;       /* Firefox */
+				    -ms-user-select: none;        /* IE10+ */
+				    user-select: none;
+				}
+					#nav ul li {
+						display: inline-block;
+						margin-left: 1em;
+						padding-left: 1em;
+						border-left: solid 1px #333;
+						border-left-color: rgba(255, 255, 255, 0.05);
+					}
+						#nav ul li:first-child {
+							border-left: 0;
+							margin-left: 0;
+							padding-left: 0;
+						}
+			#contato {
+
+			}
+
+				#contato ul {
+					padding: 0.75em 2em;
+					font-size: 0.9em;
+					background-color: rgba(255, 255, 255, 0.5);
+				}
+
+					#contato ul li {
+						display: inline-block;
+						margin-left: 1em;
+						padding-left: 1em;
+						border-left: solid 1px #333;
+						border-left-color: rgba(255, 255, 255, 0.5);
+					}
+
+					#contato ul li:first-child {
+						border-left: 0;
+						margin-left: 0;
+						padding-left: 0;
+					}
+
+	}
+
+	@media screen and (max-width: 736px) {
+
+			html, body {
+				overflow-x: hidden;
+			}
+
+				body, input, select, textarea {
+					line-height: 1.5em;
+					font-size: 10.5pt;
+				}
+
+					h2, h3, h4, h5, h6 {
+						font-size: 1.2em;
+						letter-spacing: 0.05em;
+						margin: 0 0 1em 0;
+					}
+	}
