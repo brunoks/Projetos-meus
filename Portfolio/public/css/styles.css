@@ -94,16 +94,16 @@
 
 								#header-wrapper {
 
-									background: url("/resources/images/banner.jpg") center;
+									background: url("/images/banners.jpg") center;
 									background-size: cover;
 								}
-									#img {
+									/* #img {
 										position:relative;
-										width: 1%;
-										height: 1%;
-										background-image: #fff url("/resources/images/x.jpg") no-repeat center;
+										width: 50%;
+										height: 50%;
+										background-image: #fff url("/images/x.jpg") no-repeat center;
 										background-size: cover;
-									}
+									} */
 
 									#logo h1 {
 										font-weight: 900;
