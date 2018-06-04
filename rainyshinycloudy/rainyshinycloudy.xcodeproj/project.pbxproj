@@ -209,7 +209,7 @@
 				TargetAttributes = {
 					715BA9B81D46A1A200A8D4A4 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = Q95N8J45EC;
+						DevelopmentTeam = LM5T6VK6J8;
 						DevelopmentTeamName = "Caleb Stultz (Personal Team)";
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
@@ -490,7 +490,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = Q95N8J45EC;
+				DEVELOPMENT_TEAM = LM5T6VK6J8;
 				INFOPLIST_FILE = rainyshinycloudy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stultzapps.rainyshinycloudy;
@@ -505,7 +505,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = Q95N8J45EC;
+				DEVELOPMENT_TEAM = LM5T6VK6J8;
 				INFOPLIST_FILE = rainyshinycloudy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stultzapps.rainyshinycloudy;
