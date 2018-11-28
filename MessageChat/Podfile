@@ -1,0 +1,14 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '10.0'
+
+target 'MessageChat' do
+    pod 'Alamofire'
+    pod 'lottie-ios'
+    pod 'SwiftMaskText'
+    pod 'ReachabilitySwift'
+    pod 'Firebase'
+    pod 'Firebase/Messaging'
+    pod 'SDWebImage/WebP'
+    pod 'Fabric'
+    pod 'Crashlytics'
+end
