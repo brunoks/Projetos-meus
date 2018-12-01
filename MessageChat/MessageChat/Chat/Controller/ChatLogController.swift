@@ -28,6 +28,7 @@ class ChatController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     let tabBar: CustomTabBar = {
         let view = CustomTabBar()
+        view.sendButton.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
         return view
     }()
     
@@ -149,11 +150,16 @@ class ChatController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
-    
-    
+    internal func showHiddenButtons() {
+        if self.tabBar.sendButton.isHidden {
+            self.tabBar.showHiddenButtons = false
+        } else {
+            self.tabBar.showHiddenButtons = true
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tabBar.inputTextField.delegate = self
         do {
             try fetchedResultsController.performFetch()
         } catch let err {
@@ -218,15 +224,16 @@ class ChatController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.keyboardDismissMode = .interactive
         
         let viewt = UIView()
-        viewt.backgroundColor = .white
+        viewt.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+        
+        self.view.addSubview(viewt)
         self.view.addSubview(self.tableView)
-//        self.view.addSubview(viewt)
         self.view.addSubview(self.tabBar)
         
         self.tableView.anchor(top: self.view.topAnchor, leading: self.view.leadingAnchor, bottom: nil, trailing: self.view.trailingAnchor)
         self.tableView.register(ChatMessageCell.self, forCellReuseIdentifier: self.cellid)
         
-//        viewt.anchor(top: nil, leading: self.view.leadingAnchor, bottom: nil, trailing: self.view.trailingAnchor, padding: .init(), size: .init(width: 0, height: 48))
+        viewt.anchor(top: self.tabBar.topAnchor, leading: self.tabBar.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.tabBar.trailingAnchor)
         
         self.tabBar.heightAnchor.constraint(equalToConstant: 48).isActive = true
         self.tabBar.anchor(top: nil, leading: self.view.leadingAnchor, bottom: nil, trailing: self.view.trailingAnchor)
@@ -342,9 +349,14 @@ class ChatController: UIViewController, UITableViewDataSource, UITableViewDelega
         return 100
     }
 }
-extension ChatController: ReceiveMessage {
+extension ChatController: ReceiveMessage, UITextFieldDelegate {
     
-    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.showHiddenButtons()
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.showHiddenButtons()
+    }
     //  - Protocolo que é ativado dentro do AppDelegate.Swift
     //  - Dentro da função userNotificationCenter willPresent
     func didReceiveMessage(_ text: String) {

@@ -67,10 +67,41 @@ class CustomTabBar: UIView {
         let titleColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
         button.setTitleColor(titleColor, for: .normal)
         button.isHidden = true
-//        button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
         return button
     }()
     
+    var constraintCamera: NSLayoutConstraint!
+    var constraintSend: NSLayoutConstraint!
+    
+    var showHiddenButtons: Bool! {
+        didSet {
+            if showHiddenButtons {
+                self.showButtons()
+            } else {
+                self.hiddenButtons()
+            }
+        }
+    }
+    fileprivate func showButtons() {
+        UIView.animate(withDuration: 1.0) {
+            self.cameraButton.isHidden = false
+            self.audioButton.isHidden = false
+            self.sendButton.isHidden = true
+            
+            self.constraintCamera.isActive = true
+            self.constraintSend.isActive = false
+        }
+    }
+    fileprivate func hiddenButtons() {
+        UIView.animate(withDuration: 1.0) {
+            self.cameraButton.isHidden = true
+            self.audioButton.isHidden = true
+            self.sendButton.isHidden = false
+            
+            self.constraintCamera.isActive = false
+            self.constraintSend.isActive = true
+        }
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureTabBar()
@@ -98,7 +129,11 @@ class CustomTabBar: UIView {
         
         plusButton.anchorXY(centerX: nil, centerY: messageContainer.centerYAnchor, top: nil, leading: messageContainer.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 0, left: 10, bottom: 0, right: 0), size: .init(width: 30, height: 30))
         
-        inputTextField.anchorXY(centerX: nil, centerY: messageContainer.centerYAnchor, top: nil, leading: plusButton.trailingAnchor, bottom: nil, trailing: cameraButton.leadingAnchor, padding: .init(top: 0, left: 10, bottom: 0, right: 15), size: .init(width: 0, height: 30))
+        inputTextField.anchorXY(centerX: nil, centerY: messageContainer.centerYAnchor, top: nil, leading: plusButton.trailingAnchor, bottom: nil, trailing: nil, padding: .init(top: 0, left: 10, bottom: 0, right: 15), size: .init(width: 0, height: 30))
+        
+        constraintCamera = inputTextField.trailingAnchor.constraint(equalTo: self.cameraButton.leadingAnchor, constant: -15)
+        constraintCamera.isActive = true
+        constraintSend = inputTextField.trailingAnchor.constraint(equalTo: self.sendButton.leadingAnchor, constant: -15)
         
         let topBorderView = UIView()
         topBorderView.backgroundColor = UIColor(white: 0.5, alpha: 0.3)
