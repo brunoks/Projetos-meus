@@ -28,7 +28,7 @@ class UserProfileController: UITableViewController {
             ],
             [
                 ConfigureCellAtendimento(image: #imageLiteral(resourceName: "like"), title: "FeedBack", color: UIColor(red: 0/255, green: 94/255, blue: 184/255, alpha: 1.0)),
-                ConfigureCellAtendimento(image: #imageLiteral(resourceName: "message"), title: "Messenger", color: UIColor(red: 252/255, green: 159/255, blue: 91/255, alpha: 1.0)),
+                ConfigureCellAtendimento(image: #imageLiteral(resourceName: "rightArrow"), title: "Messenger", color: UIColor(red: 252/255, green: 159/255, blue: 91/255, alpha: 1.0)),
                 ConfigureCellAtendimento(image: #imageLiteral(resourceName: "info"), title: "Sobre", color: UIColor(red: 242/255, green: 100/255, blue: 25/255, alpha: 1.0)),
                 ConfigureCellAtendimento(image: #imageLiteral(resourceName: "sair"), title: "Sair", color: UIColor(red: 45/255, green: 216/255, blue: 129/255, alpha: 1.0)),
                 ]

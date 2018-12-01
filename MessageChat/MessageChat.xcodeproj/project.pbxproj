@@ -13,6 +13,7 @@
 		CB0048F621B20A8800576D0B /* OptionsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0048F521B20A8800576D0B /* OptionsViewCell.swift */; };
 		CB98E75921B20C7300B06729 /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98E75821B20C7300B06729 /* ChatLogController.swift */; };
 		CB98E75C21B20CA900B06729 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98E75B21B20CA900B06729 /* ChatMessageCell.swift */; };
+		CBD9198B21B2B12C00F49B6B /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD9198A21B2B12B00F49B6B /* CustomTabBar.swift */; };
 		CBECAB7B21AF45920051C532 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECAB7A21AF45920051C532 /* AppDelegate.swift */; };
 		CBECAB7D21AF45920051C532 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECAB7C21AF45920051C532 /* ViewController.swift */; };
 		CBECAB8021AF45920051C532 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBECAB7E21AF45920051C532 /* Main.storyboard */; };
@@ -51,6 +52,7 @@
 		CB0048F521B20A8800576D0B /* OptionsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewCell.swift; sourceTree = "<group>"; };
 		CB98E75821B20C7300B06729 /* ChatLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
 		CB98E75B21B20CA900B06729 /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
+		CBD9198A21B2B12B00F49B6B /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		CBECAB7721AF45910051C532 /* MessageChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessageChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBECAB7A21AF45920051C532 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBECAB7C21AF45920051C532 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				CB98E75B21B20CA900B06729 /* ChatMessageCell.swift */,
+				CBD9198A21B2B12B00F49B6B /* CustomTabBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 			files = (
 				CB0048F421B20A6500576D0B /* ProfileViewCell.swift in Sources */,
 				CBECABAF21AF46DA0051C532 /* ContactsModelController.swift in Sources */,
+				CBD9198B21B2B12C00F49B6B /* CustomTabBar.swift in Sources */,
 				CBECABB821AF48830051C532 /* Componentes.swift in Sources */,
 				CB0048ED21B206B300576D0B /* MessageChat.xcdatamodeld in Sources */,
 				CB98E75C21B20CA900B06729 /* ChatMessageCell.swift in Sources */,

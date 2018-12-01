@@ -47,13 +47,40 @@ class ChatController: UIViewController, UITableViewDataSource, UITableViewDelega
         textField.placeholder = "Enter message..."
         return textField
     }()
-    
+    let plusButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "plusbutton"), for: .normal)
+        button.contentMode = .scaleAspectFill
+        let titleColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
+        button.setTitleColor(titleColor, for: .normal)
+//        button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
+        return button
+    }()
+    let cameraButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "camerabutton"), for: .normal)
+        button.contentMode = .scaleAspectFill
+        let titleColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
+        button.setTitleColor(titleColor, for: .normal)
+        //        button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
+        return button
+    }()
+    let audioButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "microphone"), for: .normal)
+        button.contentMode = .scaleAspectFill
+        let titleColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
+        button.setTitleColor(titleColor, for: .normal)
+        //        button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
+        return button
+    }()
     let sendButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "send-button"), for: .normal)
         button.contentMode = .scaleAspectFill
         let titleColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
         button.setTitleColor(titleColor, for: .normal)
+        button.isHidden = true
         button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
         return button
     }()
@@ -256,18 +283,9 @@ class ChatController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.anchor(top: self.view.topAnchor, leading: self.view.leadingAnchor, bottom: nil, trailing: self.view.trailingAnchor)
         self.tableView.register(ChatMessageCell.self, forCellReuseIdentifier: self.cellid)
         
-        view.addSubview(tabBarCustom)
-        
-        view.addSubview(messageContainer)
-        messageContainer.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        messageContainer.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor)
-        
-        tabBarCustom.anchor(top: messageContainer.topAnchor, leading: messageContainer.leadingAnchor, bottom: view.bottomAnchor, trailing: messageContainer.trailingAnchor)
-        
         bottomTableView = NSLayoutConstraint(item: self.tableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottomMargin, multiplier: 1, constant: -48)
-        bottomConstraint = NSLayoutConstraint(item: self.messageContainer, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottomMargin, multiplier: 1, constant: 0)
         
-        view.addConstraints([bottomTableView!,bottomConstraint!])
+        view.addConstraints([bottomTableView!])
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyBoardNotification(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyBoardNotification(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -279,12 +297,29 @@ class ChatController: UIViewController, UITableViewDataSource, UITableViewDelega
     //  - Configuração da TabBottomBar customizada
     //  - para atender diversos layouts
     private func configureTabBar() {
+        view.addSubview(tabBarCustom)
+        view.addSubview(messageContainer)
         messageContainer.addSubview(inputTextField)
         messageContainer.addSubview(sendButton)
+        messageContainer.addSubview(plusButton)
+        messageContainer.addSubview(cameraButton)
+        messageContainer.addSubview(audioButton)
         
-        inputTextField.anchorXY(centerX: nil, centerY: messageContainer.centerYAnchor, top: nil, leading: messageContainer.leadingAnchor, bottom: nil, trailing: sendButton.leadingAnchor, padding: .init(top: 0, left: 10, bottom: 0, right: 5), size: .init(width: 0, height: 30))
+        messageContainer.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        messageContainer.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor)
+        bottomConstraint = NSLayoutConstraint(item: self.messageContainer, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottomMargin, multiplier: 1, constant: 0)
         
-        sendButton.anchorXY(centerX: nil, centerY: inputTextField.centerYAnchor, top: nil, leading: nil, bottom: nil, trailing: messageContainer.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 10), size: .init(width: 25, height: 25))
+        view.addConstraint(bottomConstraint!)
+        tabBarCustom.anchor(top: messageContainer.topAnchor, leading: messageContainer.leadingAnchor, bottom: view.bottomAnchor, trailing: messageContainer.trailingAnchor)
+        
+        audioButton.anchorXY(centerX: nil, centerY: messageContainer.centerYAnchor, top: nil, leading: nil, bottom: nil, trailing: messageContainer.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 15), size: .init(width: 25, height: 25))
+        cameraButton.anchorXY(centerX: nil, centerY: messageContainer.centerYAnchor, top: nil, leading: nil, bottom: nil, trailing: audioButton.leadingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 15), size: .init(width: 25, height: 25))
+        
+        sendButton.anchorXY(centerX: nil, centerY: inputTextField.centerYAnchor, top: nil, leading: nil, bottom: nil, trailing: messageContainer.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 15), size: .init(width: 25, height: 25))
+        
+        plusButton.anchorXY(centerX: nil, centerY: messageContainer.centerYAnchor, top: nil, leading: messageContainer.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 0, left: 10, bottom: 0, right: 0), size: .init(width: 30, height: 30))
+        
+        inputTextField.anchorXY(centerX: nil, centerY: messageContainer.centerYAnchor, top: nil, leading: plusButton.trailingAnchor, bottom: nil, trailing: cameraButton.leadingAnchor, padding: .init(top: 0, left: 10, bottom: 0, right: 15), size: .init(width: 0, height: 30))
         
         let topBorderView = UIView()
         topBorderView.backgroundColor = UIColor(white: 0.5, alpha: 0.3)
