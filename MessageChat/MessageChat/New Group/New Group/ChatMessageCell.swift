@@ -9,7 +9,11 @@ import UIKit
 
 class ChatMessageCell: UITableViewCell {
     let messageLabel = UILabel()
-    let bubblebackgroundView = UIImageView()
+    let bubblebackgroundView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 7
+        return view
+    }()
     
     let timeLabel: UILabel = {
         let label = UILabel()
@@ -31,15 +35,16 @@ class ChatMessageCell: UITableViewCell {
     var timesleadingConstraint: NSLayoutConstraint!
     var timestrailingConstraint: NSLayoutConstraint!
     
-    static let grayBubbleImage = UIImage(named: "bubble_gray")?.resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26)).withRenderingMode(.alwaysTemplate)
-    static let blueBubbleImage = UIImage(named: "bubble_blue")?.resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26)).withRenderingMode(.alwaysTemplate)
+    //    static let grayBubbleImage = UIImage(named: "bubble_gray")?.resizableImage(withCapInsets: UIEdgeInsets(top: 10, left: 26, bottom: 10, right: 26)).withRenderingMode(.alwaysTemplate)
+    //    static let blueBubbleImage = UIImage(named: "bubble_blue")?.resizableImage(withCapInsets: UIEdgeInsets(top: 10, left: 26, bottom: 10, right: 26)).withRenderingMode(.alwaysTemplate)
+    //
+    //
+    //    static let bubbleImage = UIImage(named: "bubble")?.resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26)).withRenderingMode(.alwaysTemplate)
     
     var message: Message! {
         didSet {
-            bubblebackgroundView.image = message.isSender ? ChatMessageCell.blueBubbleImage : ChatMessageCell.grayBubbleImage
-            messageLabel.textColor = message.isSender ? .white : .black
-            timeLabel.textColor = message.isSender ? .white : .black
-            bubblebackgroundView.tintColor = message.isSender ? UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1) : UIColor(white: 0.95, alpha: 1)
+            
+            bubblebackgroundView.backgroundColor = message.isSender ? UIColor(red: 215/255, green: 222/255, blue: 232/255, alpha: 1) : UIColor(white: 1.0, alpha: 1)
             
             messageLabel.text = message.text
             
@@ -60,9 +65,7 @@ class ChatMessageCell: UITableViewCell {
         
         UserDefaults.standard.setValue(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
         
-        backgroundColor = .clear
         
-        bubblebackgroundView.layer.cornerRadius = 12
         self.addSubview(bubblebackgroundView)
         
         self.addSubview(messageLabel)
@@ -71,17 +74,37 @@ class ChatMessageCell: UITableViewCell {
         
         messageLabel.anchor(top: self.topAnchor, leading: nil, bottom: self.bottomAnchor, trailing: nil, padding: .init(top: 14, left: 0, bottom: 17, right: 0))
         messageLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 250).isActive = true
+        
         leadingConstraint = messageLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 28)
-        trailingConstraint = messageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -28)
+        trailingConstraint = messageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -55)
         
-        bubblebackgroundView.anchor(top: messageLabel.topAnchor, leading: messageLabel.leadingAnchor, bottom: messageLabel.bottomAnchor, trailing: messageLabel.trailingAnchor, padding: .init(top: -16, left: -16, bottom: -19, right: -16))
+        bubblebackgroundView.anchor(top: messageLabel.topAnchor, leading: messageLabel.leadingAnchor, bottom: messageLabel.bottomAnchor, trailing: messageLabel.trailingAnchor, padding: .init(top: -10, left: -9, bottom: -10, right: -35))
         
-        timeLabel.anchor(top: nil, leading: nil, bottom: bubblebackgroundView.bottomAnchor, trailing: bubblebackgroundView.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 5, right: 25))
-        
-        
-        
+        timeLabel.anchor(top: nil, leading: nil, bottom: bubblebackgroundView.bottomAnchor, trailing: bubblebackgroundView.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 5, right: 5))
     }
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        self.backgroundColor = .clear
+        self.selectedBackgroundView = UIView()
+        
+        if isSelected {
+            self.bubblebackgroundView.backgroundColor = message.isSender ? UIColor(red: 215/255, green: 222/255, blue: 232/255, alpha: 1) : .white
+        }
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        
+        if highlighted {
+            bubblebackgroundView.backgroundColor = UIColor(red: 81/255, green: 114/255, blue: 156/255, alpha: 1.0)
+            self.messageLabel.textColor = .white
+            self.timeLabel.textColor = .white
+        } else {
+            self.messageLabel.textColor = .darkGray
+            self.timeLabel.textColor = .darkGray
+        }
+    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

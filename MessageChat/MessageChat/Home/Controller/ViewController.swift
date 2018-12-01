@@ -22,7 +22,6 @@ class ContactsController: UICollectionViewController, UICollectionViewDelegateFl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        setupData()
         loadData()
         self.filteredCandies = self.messages
         self.collectionView.reloadData()
@@ -31,9 +30,11 @@ class ContactsController: UICollectionViewController, UICollectionViewDelegateFl
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print(scrollView.contentOffset.y)
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = true
@@ -49,8 +50,6 @@ class ContactsController: UICollectionViewController, UICollectionViewDelegateFl
         
         let view = UIImageView(image: #imageLiteral(resourceName: "coffe"))
         view.contentMode = .scaleAspectFit
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         
         navigationItem.titleView = view
         collectionView?.backgroundColor = UIColor.white

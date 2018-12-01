@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB0048ED21B206B300576D0B /* MessageChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB0048EB21B206B300576D0B /* MessageChat.xcdatamodeld */; };
+		CB0048F221B20A4700576D0B /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0048F121B20A4700576D0B /* UserProfileController.swift */; };
+		CB0048F421B20A6500576D0B /* ProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0048F321B20A6500576D0B /* ProfileViewCell.swift */; };
+		CB0048F621B20A8800576D0B /* OptionsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0048F521B20A8800576D0B /* OptionsViewCell.swift */; };
 		CBECAB7B21AF45920051C532 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECAB7A21AF45920051C532 /* AppDelegate.swift */; };
 		CBECAB7D21AF45920051C532 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECAB7C21AF45920051C532 /* ViewController.swift */; };
 		CBECAB8021AF45920051C532 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBECAB7E21AF45920051C532 /* Main.storyboard */; };
-		CBECAB8321AF45920051C532 /* MessageChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBECAB8121AF45920051C532 /* MessageChat.xcdatamodeld */; };
 		CBECAB8521AF45950051C532 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBECAB8421AF45950051C532 /* Assets.xcassets */; };
 		CBECAB8821AF45950051C532 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBECAB8621AF45950051C532 /* LaunchScreen.storyboard */; };
 		CBECAB9321AF45950051C532 /* MessageChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECAB9221AF45950051C532 /* MessageChatTests.swift */; };
@@ -20,7 +23,6 @@
 		CBECABB321AF47A90051C532 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECABB221AF47A90051C532 /* CustomTabBarController.swift */; };
 		CBECABB521AF48410051C532 /* ExtensionsAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECABB421AF48410051C532 /* ExtensionsAnchor.swift */; };
 		CBECABB821AF48830051C532 /* Componentes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECABB721AF48830051C532 /* Componentes.swift */; };
-		CBECABBA21AF49D30051C532 /* dataMessages.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = CBECABB921AF49D30051C532 /* dataMessages.xcdatamodel */; };
 		CBECABBF21AF4A700051C532 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECABBE21AF4A700051C532 /* ChatMessageCell.swift */; };
 		CBECABC121AF4AB50051C532 /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECABC021AF4AB50051C532 /* ChatLogController.swift */; };
 /* End PBXBuildFile section */
@@ -43,11 +45,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB0048EC21B206B300576D0B /* MessageChat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MessageChat.xcdatamodel; sourceTree = "<group>"; };
+		CB0048F121B20A4700576D0B /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
+		CB0048F321B20A6500576D0B /* ProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewCell.swift; sourceTree = "<group>"; };
+		CB0048F521B20A8800576D0B /* OptionsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewCell.swift; sourceTree = "<group>"; };
 		CBECAB7721AF45910051C532 /* MessageChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessageChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBECAB7A21AF45920051C532 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBECAB7C21AF45920051C532 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CBECAB7F21AF45920051C532 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CBECAB8221AF45920051C532 /* MessageChat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MessageChat.xcdatamodel; sourceTree = "<group>"; };
 		CBECAB8421AF45950051C532 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBECAB8721AF45950051C532 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBECAB8921AF45950051C532 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,7 +67,6 @@
 		CBECABB221AF47A90051C532 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		CBECABB421AF48410051C532 /* ExtensionsAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsAnchor.swift; sourceTree = "<group>"; };
 		CBECABB721AF48830051C532 /* Componentes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Componentes.swift; sourceTree = "<group>"; };
-		CBECABB921AF49D30051C532 /* dataMessages.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dataMessages.xcdatamodel; sourceTree = "<group>"; };
 		CBECABBE21AF4A700051C532 /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
 		CBECABC021AF4AB50051C532 /* ChatLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +96,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB0048EE21B20A2100576D0B /* ProfileUser */ = {
+			isa = PBXGroup;
+			children = (
+				CB0048F021B20A3100576D0B /* Controller */,
+				CB0048EF21B20A2C00576D0B /* View */,
+			);
+			path = ProfileUser;
+			sourceTree = "<group>";
+		};
+		CB0048EF21B20A2C00576D0B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB0048F321B20A6500576D0B /* ProfileViewCell.swift */,
+				CB0048F521B20A8800576D0B /* OptionsViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CB0048F021B20A3100576D0B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CB0048F121B20A4700576D0B /* UserProfileController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		CBECAB6E21AF45910051C532 = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +145,7 @@
 		CBECAB7921AF45910051C532 /* MessageChat */ = {
 			isa = PBXGroup;
 			children = (
+				CB0048EE21B20A2100576D0B /* ProfileUser */,
 				CBECABBB21AF4A290051C532 /* Chat */,
 				CBECABB621AF485C0051C532 /* Componentes */,
 				CBECABAB21AF46090051C532 /* Home */,
@@ -123,7 +154,6 @@
 				CBECAB8421AF45950051C532 /* Assets.xcassets */,
 				CBECAB8621AF45950051C532 /* LaunchScreen.storyboard */,
 				CBECAB8921AF45950051C532 /* Info.plist */,
-				CBECAB8121AF45920051C532 /* MessageChat.xcdatamodeld */,
 			);
 			path = MessageChat;
 			sourceTree = "<group>";
@@ -176,7 +206,7 @@
 		CBECABB621AF485C0051C532 /* Componentes */ = {
 			isa = PBXGroup;
 			children = (
-				CBECABB921AF49D30051C532 /* dataMessages.xcdatamodel */,
+				CB0048EB21B206B300576D0B /* MessageChat.xcdatamodeld */,
 				CBECABB421AF48410051C532 /* ExtensionsAnchor.swift */,
 				CBECABB721AF48830051C532 /* Componentes.swift */,
 			);
@@ -340,14 +370,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB0048F421B20A6500576D0B /* ProfileViewCell.swift in Sources */,
 				CBECABAF21AF46DA0051C532 /* ContactsModelController.swift in Sources */,
 				CBECABBF21AF4A700051C532 /* ChatMessageCell.swift in Sources */,
 				CBECABB821AF48830051C532 /* Componentes.swift in Sources */,
-				CBECAB8321AF45920051C532 /* MessageChat.xcdatamodeld in Sources */,
-				CBECABBA21AF49D30051C532 /* dataMessages.xcdatamodel in Sources */,
+				CB0048ED21B206B300576D0B /* MessageChat.xcdatamodeld in Sources */,
 				CBECABC121AF4AB50051C532 /* ChatLogController.swift in Sources */,
+				CB0048F221B20A4700576D0B /* UserProfileController.swift in Sources */,
 				CBECABB321AF47A90051C532 /* CustomTabBarController.swift in Sources */,
 				CBECABB121AF471C0051C532 /* ContactsCell.swift in Sources */,
+				CB0048F621B20A8800576D0B /* OptionsViewCell.swift in Sources */,
 				CBECAB7D21AF45920051C532 /* ViewController.swift in Sources */,
 				CBECAB7B21AF45920051C532 /* AppDelegate.swift in Sources */,
 				CBECABB521AF48410051C532 /* ExtensionsAnchor.swift in Sources */,
@@ -681,12 +713,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		CBECAB8121AF45920051C532 /* MessageChat.xcdatamodeld */ = {
+		CB0048EB21B206B300576D0B /* MessageChat.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				CBECAB8221AF45920051C532 /* MessageChat.xcdatamodel */,
+				CB0048EC21B206B300576D0B /* MessageChat.xcdatamodel */,
 			);
-			currentVersion = CBECAB8221AF45920051C532 /* MessageChat.xcdatamodel */;
+			currentVersion = CB0048EC21B206B300576D0B /* MessageChat.xcdatamodel */;
 			path = MessageChat.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

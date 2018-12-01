@@ -66,6 +66,13 @@ extension ContactsController {
             
             let _ = ContactsController.createMessageWithText(text: "Please vote for me, you did for billy", friend: hillary, minutesAgo: 8 * 60 * 24, context: context)
             
+            let bruno = NSEntityDescription.insertNewObject(forEntityName: "Friend", into: context) as! Friend
+            bruno.name = "Bruno Vieira"
+            bruno.profileImageName = "photoprofile"
+            
+            let _ = ContactsController.createMessageWithText(text: "Koe mermao vc é o cara", friend: bruno, minutesAgo: 60 * 72, context: context)
+            
+            
             do {
                 try context.save()
             } catch let err {
@@ -79,17 +86,17 @@ extension ContactsController {
         steve.name = "Steve Jobs"
         steve.profileImageName = "steve"
         
-        let _ = ContactsController.createMessageWithText(text: "Good morning...", friend: steve, minutesAgo: 3, context: context)
-        let _ = ContactsController.createMessageWithText(text: "Hello how are you? Hope you are having a good morning, Hello how are you? Hope you are having a good morning", friend: steve, minutesAgo: 2, context: context)
-        let _ = ContactsController.createMessageWithText(text: "É nois que voa", friend: steve, minutesAgo: 1, context: context)
+        let _ = ContactsController.createMessageWithText(text: "Good morning...", friend: steve, minutesAgo: 7 * 60 * 24, context: context)
+        let _ = ContactsController.createMessageWithText(text: "Hello how are you? Hope you are having a good morning, Hello how are you? Hope you are having a good morning", friend: steve, minutesAgo: 7 * 60 * 24, context: context)
+        let _ = ContactsController.createMessageWithText(text: "É nois que voa", friend: steve, minutesAgo: 7 * 60 * 24, context: context)
         
         //response message
-        let _ = ContactsController.createMessageWithText(text: "Yes, totally looking to buy an iPhone7.", friend: steve, minutesAgo: 1, context: context, isSender: true)
-        let _ = ContactsController.createMessageWithText(text: "Bolsonaro 2018. #chupaessamanga", friend: steve, minutesAgo: 1, context: context, isSender: false)
-        let _ = ContactsController.createMessageWithText(text: "🙂🙂🙂🙂🙂", friend: steve, minutesAgo: 1, context: context, isSender: true)
-        let _ = ContactsController.createMessageWithText(text: "É isso ai mesmo1!!! uhuuuuuulllll", friend: steve, minutesAgo: 1, context: context, isSender: true)
-        let _ = ContactsController.createMessageWithText(text: "Qual é mermão, tamo junto, é isso ai mermao boraaa uhuuuu;lll", friend: steve, minutesAgo: 1, context: context, isSender: false)
-        let _ = ContactsController.createMessageWithText(text: "Qual é mermão, tamo junto, é isso ai mermao boraaa uhuuuu;lll", friend: steve, minutesAgo: 1, context: context, isSender: false)
+        let _ = ContactsController.createMessageWithText(text: "Yes, totally looking to buy an iPhone7.", friend: steve, minutesAgo: 60 * 24, context: context, isSender: true)
+        let _ = ContactsController.createMessageWithText(text: "Bolsonaro 2018. #chupaessamanga", friend: steve, minutesAgo: 60 * 24, context: context, isSender: false)
+        let _ = ContactsController.createMessageWithText(text: "🙂🙂🙂🙂🙂", friend: steve, minutesAgo: 60 * 24, context: context, isSender: true)
+        let _ = ContactsController.createMessageWithText(text: "É isso ai mesmo1!!! uhuuuuuulllll", friend: steve, minutesAgo: 60 * 24, context: context, isSender: true)
+        let _ = ContactsController.createMessageWithText(text: "Qual é mermão, tamo junto, é isso ai mermao boraaa uhuuuu;lll", friend: steve, minutesAgo: 60 * 24, context: context, isSender: false)
+        let _ = ContactsController.createMessageWithText(text: "Qual é mermão, tamo junto, é isso ai mermao boraaa uhuuuu;lll", friend: steve, minutesAgo: 60 * 24, context: context, isSender: false)
     }
     
     static func createMessageWithText(text: String, friend: Friend, minutesAgo: Double, context: NSManagedObjectContext, isSender: Bool = false) -> Message {
@@ -98,6 +105,10 @@ extension ContactsController {
         message.text = text
         message.date = Date().addingTimeInterval(-minutesAgo * 60)
         message.isSender = NSNumber(booleanLiteral: isSender) as! Bool
+        
+        let dateFormat = DateFormatter()
+        dateFormat.dateStyle = .medium
+        message.dateFormat = dateFormat.string(from: Date().addingTimeInterval(-minutesAgo * 60))
         return message
     }
     static func createNowMessage(text: String, friend: Friend, minutesAgo: Double, context: NSManagedObjectContext, isSender: Bool = false) -> Message {
@@ -137,7 +148,14 @@ extension ContactsController {
         if let context = delegate?.persistentContainer.viewContext {
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Friend")
             do {
-                return try context.fetch(request) as? [Friend]
+                let dt = try context.fetch(request) as? [Friend]
+                if dt?.count == 0 {
+                    self.setupData()
+                    self.loadData()
+                } else {
+                    return dt
+                }
+                return dt
             } catch let err {
                 print(err)
             }

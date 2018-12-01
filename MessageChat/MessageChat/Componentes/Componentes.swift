@@ -16,7 +16,7 @@ class FormatHeaderViewDate: UIView {
     }()
     private let backgroundTimes: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 12.5
+        view.layer.cornerRadius = 7
         view.backgroundColor = UIColor(red: 188/255, green: 211/255, blue: 242/255, alpha: 1.0)
         return view
     }()
@@ -53,7 +53,14 @@ class FormatHeaderViewDate: UIView {
         setup()
     }
     func setDateString(date: Date) {
-        self.title.text = self.translateDayWeek(dateweek.string(from: date)) + ", " + dateFormatter.string(from: date)
+        switch self.dateFormatter.string(from: date) {
+        case self.dateFormatter.string(from: Date()):
+            self.title.text = "Hoje"
+        case self.dateFormatter.string(from: Date().addingTimeInterval(-(60 * 24) * 60)):
+            self.title.text = "Ontem"
+        default:
+            self.title.text = self.translateDayWeek(dateweek.string(from: date)) + ", " + dateFormatter.string(from: date)
+        }
     }
     
     private func setup() {
@@ -64,9 +71,9 @@ class FormatHeaderViewDate: UIView {
         
         self.view.addSubview(title)
         self.title.anchorXY(centerX: self.centerXAnchor, centerY: self.centerYAnchor, top: nil, leading: nil, bottom: nil, trailing: nil, padding: .init(), size: .init(width: 0, height: 15))
-        self.alpha = 0
+        self.alpha = 1
         
-        self.backgroundTimes.anchor(top: title.topAnchor, leading: title.leadingAnchor, bottom: title.bottomAnchor, trailing: title.trailingAnchor, padding: .init(top: -5, left: -5, bottom: -5, right: -5))
+        self.backgroundTimes.anchor(top: title.topAnchor, leading: title.leadingAnchor, bottom: title.bottomAnchor, trailing: title.trailingAnchor, padding: .init(top: -3, left: -15, bottom: -3, right: -15))
         
     }
     required init?(coder aDecoder: NSCoder) {
