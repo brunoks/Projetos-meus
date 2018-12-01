@@ -2,7 +2,7 @@
 //  ChatLogController.swift
 //  MessageChat
 //
-//  Created by Mac Novo on 28/11/18.
+//  Created by Mac Novo on 30/11/18.
 //  Copyright © 2018 Bruno iOS Dev. All rights reserved.
 //
 
@@ -407,3 +407,4 @@ extension ChatController: ReceiveMessage {
         }
     }
 }
+
