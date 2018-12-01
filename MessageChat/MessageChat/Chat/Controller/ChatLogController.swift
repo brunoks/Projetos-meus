@@ -351,12 +351,12 @@ class ChatController: UIViewController, UITableViewDataSource, UITableViewDelega
 }
 extension ChatController: ReceiveMessage, UITextFieldDelegate {
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
         self.showHiddenButtons()
+        return true
     }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        self.showHiddenButtons()
-    }
+
     //  - Protocolo que é ativado dentro do AppDelegate.Swift
     //  - Dentro da função userNotificationCenter willPresent
     func didReceiveMessage(_ text: String) {
