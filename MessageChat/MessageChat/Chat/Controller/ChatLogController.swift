@@ -41,7 +41,7 @@ class ChatController: UIViewController, UITableViewDataSource, UITableViewDelega
             let context = delegate.persistentContainer.viewContext
             
             let text = self.tabBar.inputTextField.text!
-            let _ = ContactsController.createMessageWithText(text: text, friend: friend!, minutesAgo: 0, context: context, isSender: true)
+            let _ = ContactsController.createMessageWithText(text: text, friend: friend!, context: context, isSender: true)
             do {
                 try context.save()
                 self.tabBar.inputTextField.text = .none
@@ -363,7 +363,7 @@ extension ChatController: ReceiveMessage, UITextFieldDelegate {
         let delegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.persistentContainer.viewContext
         
-        let _ = ContactsController.createMessageWithText(text: text, friend: friend!, minutesAgo: 0, context: context, isSender: false)
+        let _ = ContactsController.createMessageWithText(text: text, friend: friend!, context: context, isSender: false)
         do {
             try context.save()
             self.tabBar.inputTextField.text = .none
