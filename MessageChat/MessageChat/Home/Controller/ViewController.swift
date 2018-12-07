@@ -27,12 +27,16 @@ class ContactsController: UICollectionViewController, UICollectionViewDelegateFl
         self.collectionView.reloadData()
         self.tabBarController?.tabBar.isHidden = false
     }
+    
+    
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print(scrollView.contentOffset.y)
     }
     override func viewWillDisappear(_ animated: Bool) {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Setup the Search Controller

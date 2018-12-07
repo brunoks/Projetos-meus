@@ -48,7 +48,6 @@ class CustomTabBar: UIView {
         button.contentMode = .scaleAspectFill
         let titleColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
         button.setTitleColor(titleColor, for: .normal)
-        //        button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
         return button
     }()
     let cameraButton: UIButton = {
@@ -57,7 +56,6 @@ class CustomTabBar: UIView {
         button.contentMode = .scaleAspectFill
         let titleColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
         button.setTitleColor(titleColor, for: .normal)
-        //        button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
         return button
     }()
     let audioButton: UIButton = {
@@ -66,7 +64,6 @@ class CustomTabBar: UIView {
         button.contentMode = .scaleAspectFill
         let titleColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
         button.setTitleColor(titleColor, for: .normal)
-        //        button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
         return button
     }()
     let sendButton: UIButton = {
@@ -123,7 +120,7 @@ class CustomTabBar: UIView {
         }
     }
     override init(frame: CGRect) {
-        super.init(frame: frame)
+        super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 48))
         configureTabBar()
     }
     
@@ -139,8 +136,6 @@ class CustomTabBar: UIView {
         stackView.addArrangedSubview(sendButton)
         stackView.addArrangedSubview(audioButton)
         
-//        buttonContainer.addSubview(sendButton)
-        
         messageContainer.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor)
 
         tabBarCustom.anchor(top: messageContainer.topAnchor, leading: messageContainer.leadingAnchor, bottom: self.bottomAnchor, trailing: messageContainer.trailingAnchor)
@@ -148,7 +143,6 @@ class CustomTabBar: UIView {
         audioButton.anchorXY(centerX: nil, centerY: nil, top: nil, leading: nil, bottom: nil, trailing: nil, padding: .init(), size: .init(width: 30, height: 30))
         cameraButton.anchorXY(centerX: nil, centerY: nil, top: nil, leading: nil, bottom: nil, trailing: nil, padding: .init(), size: .init(width: 30, height: 30))
         
-//        buttonContainer.anchorXY(centerX: nil, centerY: nil, top: nil, leading: nil, bottom: nil, trailing: nil, padding: .init(), size: .init(width: 30, height: 30))
         
         sendButton.anchor(top: nil, leading: nil, bottom: nil, trailing: nil, padding: .init(), size: .init(width: 30, height: 30))
         
@@ -161,6 +155,7 @@ class CustomTabBar: UIView {
         messageContainer.addSubview(topBorderView)
         topBorderView.anchor(top: messageContainer.topAnchor, leading: messageContainer.leadingAnchor, bottom: nil, trailing: messageContainer.trailingAnchor, padding: .init(), size: .init(width: 0, height: 0.5))
     }
+
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

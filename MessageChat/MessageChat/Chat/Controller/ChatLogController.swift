@@ -13,7 +13,7 @@ protocol ReceiveMessage {
     func didReceiveMessage(_ text: String)
 }
 
-class ChatController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UIScrollViewDelegate {
+class ChatController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     private let cellid = "cellId"
     var friend: Friend? {
@@ -22,15 +22,7 @@ class ChatController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
-    //  - Variáveis do layout da tabbottonbar
-    var bottomConstraint: NSLayoutConstraint?
-    var bottomTableView: NSLayoutConstraint?
 
-    let tabBar: CustomTabBar = {
-        let view = CustomTabBar()
-        view.sendButton.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
-        return view
-    }()
     
     //  - Ativada pelo botão sendButton
     @objc func handleSend() {
@@ -108,29 +100,17 @@ class ChatController: UIViewController, UITableViewDataSource, UITableViewDelega
             self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
     }
+
     
     
-    
-    //  - Agrupamento de dados em seções
-    fileprivate func groupMessages(message: [Message]) {
-        let groupedMessages = Dictionary(grouping: message) { (element) -> Date in
-            let date = DateFormatter()
-            date.dateFormat = "yyyy-MM-dd"
-            return date.date(from: date.string(from: element.date!))!
-        }
-        //provide a sorting for your keys somehow
-        let sortedKeys = groupedMessages.keys.reversed()
-        sortedKeys.forEach { (key) in
-            let values = groupedMessages[key]
-            self.dataTable.append(values ?? [])
-        }
-        
-    }
-    
+    let tabBar: CustomTabBar = {
+        let view = CustomTabBar()
+        view.sendButton.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
+        return view
+    }()
     
     
     //  - Variáveis para uso da TableView
-    var tableView = UITableView()
     var dataTable: [[Message]] = [[]]
     var viewDate = FormatHeaderViewDate()
     
@@ -218,78 +198,24 @@ class ChatController: UIViewController, UITableViewDataSource, UITableViewDelega
     private func configureTableView() {
         self.navigationController?.navigationBar.backItem?.title = ""
         self.tableView.backgroundColor = UIColor(white: 0.93, alpha: 1.0)
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
         self.tableView.separatorStyle = .none
         self.tableView.keyboardDismissMode = .interactive
         
-        let viewt = UIView()
-        viewt.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
-        
-        self.view.addSubview(viewt)
-        self.view.addSubview(self.tableView)
-        self.view.addSubview(self.tabBar)
-        
-        self.tableView.anchor(top: self.view.topAnchor, leading: self.view.leadingAnchor, bottom: nil, trailing: self.view.trailingAnchor)
         self.tableView.register(ChatMessageCell.self, forCellReuseIdentifier: self.cellid)
-        
-        viewt.anchor(top: self.tabBar.topAnchor, leading: self.tabBar.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.tabBar.trailingAnchor)
-        
-        self.tabBar.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        self.tabBar.anchor(top: nil, leading: self.view.leadingAnchor, bottom: nil, trailing: self.view.trailingAnchor)
-        
-        bottomConstraint = NSLayoutConstraint(item: tabBar, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottomMargin, multiplier: 1, constant: 0)
-        bottomTableView = NSLayoutConstraint(item: self.tableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottomMargin, multiplier: 1, constant: -48)
-        
-        view.addConstraints([bottomTableView!, bottomConstraint!])
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyBoardNotification(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyBoardNotification(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
-    
-    
-    
-
-    
-    
-    
-    //  - Notifica quando o teclado irá abrir
-    //  - pra que a lista e a tabbar subam junto com o teclado
-    @objc func handleKeyBoardNotification(_ notification: NSNotification) {
-        if let userInfo = notification.userInfo {
-            let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
-            let isKeyBoardShowing = notification.name == UIResponder.keyboardWillShowNotification
-            
-            bottomTableView?.constant = isKeyBoardShowing ? -(keyboardFrame.height + 48) : -48
-            bottomConstraint?.constant = isKeyBoardShowing ? -(keyboardFrame.height) : 0
-            UIView.animate(withDuration: 0, delay: 0, options: .curveEaseOut, animations: {
-                self.view.layoutIfNeeded()
-            }) { (_) in
-                
-                if isKeyBoardShowing {
-                    let lastSection =  self.tableView.numberOfSections - 1
-                    let lastItem = self.tableView.numberOfRows(inSection: lastSection) - 1
-                    let indexPath = IndexPath(item: lastItem, section: lastSection)
-                    self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-                }
-            }
-        }
-    }
-    
     
     
     //MARK :- Funções de controle do HeaderSection
     private var targetY: CGFloat?
-    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    override public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         targetY = targetContentOffset.pointee.y
     }
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    override public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (scrollView.contentOffset.y == targetY) {
             self.hiddenViewHeader()
         }
     }
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.showViewHeader()
     }
     fileprivate func hiddenViewHeader() {
@@ -305,7 +231,7 @@ class ChatController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     //MARK :- TableView Operation
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let date = fetchedResultsController.sections![section].objects as? [Message] {
             let view = FormatHeaderViewDate()
             view.setDateString(date: (date.first?.date)!)
@@ -316,29 +242,29 @@ class ChatController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = fetchedResultsController.sections?[section].numberOfObjects {
             return count
         }
         return 0
     }
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         if let count = fetchedResultsController.sections?.count {
             return count
         }
         return 0
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.cellid, for: indexPath) as! ChatMessageCell
         let message = fetchedResultsController.object(at: indexPath) as! Message
         cell.message = message
         return cell
     }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         let message = fetchedResultsController.object(at: indexPath) as! Message
         if let messageText = message.text {
             let size = CGSize(width: 250, height: 1000)
@@ -348,6 +274,15 @@ class ChatController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         return 100
     }
+    
+    //MARK:- Make the bottom tabbar
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    override var inputAccessoryView: UIView? {
+        return self.tabBar
+    }
+    
 }
 extension ChatController: ReceiveMessage, UITextFieldDelegate {
     
