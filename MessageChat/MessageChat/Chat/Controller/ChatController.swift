@@ -15,7 +15,7 @@ protocol ReceiveMessage {
 
 class ChatController: UITableViewController, NSFetchedResultsControllerDelegate {
     
-    private let cellid = "cellId"
+    internal let cellid = "cellId"
     var friend: Friend? {
         didSet {
             
@@ -26,20 +26,18 @@ class ChatController: UITableViewController, NSFetchedResultsControllerDelegate 
     
     //  - Ativada pelo botão sendButton
     @objc func handleSend() {
-        if tabBar.inputTextField.text != "" {
-            print(self.tabBar.inputTextField.text!)
-            
-            let delegate = UIApplication.shared.delegate as! AppDelegate
-            let context = delegate.persistentContainer.viewContext
-            
-            let text = self.tabBar.inputTextField.text!
-            let _ = ContactsController.createMessageWithText(text: text, friend: friend!, context: context, isSender: true)
-            do {
-                try context.save()
-                self.tabBar.inputTextField.text = .none
-            } catch let err {
-                print(err)
-            }
+        print(self.tabBar.inputTextField.text!)
+        self.showHiddenButtons(true)
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        let context = delegate.persistentContainer.viewContext
+        
+        let text = self.tabBar.inputTextField.text!
+        let _ = ContactsController.createMessageWithText(text: text, friend: friend!, context: context, isSender: true)
+        do {
+            try context.save()
+            self.tabBar.inputTextField.text = .none
+        } catch let err {
+            print(err)
         }
     }
     
@@ -130,13 +128,7 @@ class ChatController: UITableViewController, NSFetchedResultsControllerDelegate 
         
     }
     
-    internal func showHiddenButtons() {
-        if self.tabBar.sendButton.isHidden {
-            self.tabBar.showHiddenButtons = false
-        } else {
-            self.tabBar.showHiddenButtons = true
-        }
-    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBar.inputTextField.delegate = self
@@ -155,36 +147,34 @@ class ChatController: UITableViewController, NSFetchedResultsControllerDelegate 
     
     //  - Configure Access Profile User
     fileprivate func configureTopProfile() {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = TopProfile()
         view.widthAnchor.constraint(equalToConstant: self.view.frame.width - 65).isActive = true
-        view.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        let button1 = UIButton()
-        button1.setImage(UIImage(named: (friend?.profileImageName)!), for: .normal)
-        button1.layer.cornerRadius = 17.5
-        button1.contentMode = .center
-        button1.layer.masksToBounds = true
-        
-        let button2 = UIButton()
-        button2.setTitle(friend?.name, for: .normal)
-        button2.titleLabel?.textAlignment = .right
-        button2.setTitleColor(UIColor.black, for: .normal)
-        button2.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17.5)
-        button2.addTarget(self, action: #selector(self.goToProfileUser), for: .touchUpInside)
-        
-        view.addSubview(button1)
-        view.addSubview(button2)
-        
-        button1.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(), size: .init(width: 35, height: 35))
-        button2.anchor(top: view.topAnchor, leading: button1.trailingAnchor, bottom: nil, trailing: nil, padding: .init(top: -4, left: 7, bottom: 0, right: 0))
+        view.imageprofile.setImage(UIImage(named: (friend?.profileImageName)!), for: .normal)
+        view.profilename.setTitle(friend?.name, for: .normal)
         
         let rightBarButton = UIBarButtonItem(customView: view)
         self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     
     
+    @objc func keyboardWillShow(_ notification: NSNotification) {
+        let info = notification.userInfo!
+        let keyboardSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
+        
+        tableView.contentInset.bottom = keyboardSize
+    }
+    
+    
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+        tableView.contentInset.bottom = 0
+    }
+    
+    
+
     //  - Função que encaminha o usuário ao Perfil do Contato
     @objc func goToProfileUser() {
         let profileUser = UserProfileController()
@@ -230,51 +220,6 @@ class ChatController: UITableViewController, NSFetchedResultsControllerDelegate 
     }
     
     
-    //MARK :- TableView Operation
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if let date = fetchedResultsController.sections![section].objects as? [Message] {
-            let view = FormatHeaderViewDate()
-            view.setDateString(date: (date.first?.date)!)
-            self.viewDate = view
-            return view
-        }
-        return UIView()
-    }
-    
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let count = fetchedResultsController.sections?[section].numberOfObjects {
-            return count
-        }
-        return 0
-    }
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        if let count = fetchedResultsController.sections?.count {
-            return count
-        }
-        return 0
-    }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellid, for: indexPath) as! ChatMessageCell
-        let message = fetchedResultsController.object(at: indexPath) as! Message
-        cell.message = message
-        return cell
-    }
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
-    }
-    
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        let message = fetchedResultsController.object(at: indexPath) as! Message
-        if let messageText = message.text {
-            let size = CGSize(width: 250, height: 1000)
-            let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-            let estimatedFrame = NSString(string: messageText).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15)], context: nil)
-            return estimatedFrame.height + 15
-        }
-        return 100
-    }
-    
     //MARK:- Make the bottom tabbar
     override var canBecomeFirstResponder: Bool {
         return true
@@ -286,9 +231,21 @@ class ChatController: UITableViewController, NSFetchedResultsControllerDelegate 
 }
 extension ChatController: ReceiveMessage, UITextFieldDelegate {
     
+    internal func showHiddenButtons(_ hidden: Bool) {
+        if self.tabBar.sendButton.isHidden {
+            self.tabBar.showHiddenButtons = hidden
+        } else {
+            self.tabBar.showHiddenButtons = hidden
+        }
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        self.showHiddenButtons()
+        if string != "", self.tabBar.inputTextField.text == "" {
+            self.showHiddenButtons(false)
+        } else if textField.text!.count - 1 == 0, string == "" {
+            self.showHiddenButtons(true)
+        }
         return true
     }
 
