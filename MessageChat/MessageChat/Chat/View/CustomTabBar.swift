@@ -151,6 +151,17 @@ class CustomTabBar: UIView {
         return CGSize.zero
     }
     
+    
+    //MARK:- Fix the problem with iPhone X to inputAccessoryView
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        if #available(iOS 11.0, *) {
+            if let window = window {
+                bottomAnchor.constraint(lessThanOrEqualToSystemSpacingBelow: window.safeAreaLayoutGuide.bottomAnchor, multiplier: 1.0).isActive = true
+            }
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

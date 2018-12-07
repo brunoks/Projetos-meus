@@ -217,7 +217,7 @@ class ChatController: UITableViewController, NSFetchedResultsControllerDelegate 
             self.viewDate.alpha = 1
         })
     }
-    
+
     
     //MARK:- Make the bottom tabbar
     override var canBecomeFirstResponder: Bool {
