@@ -16,16 +16,20 @@ class CustomTabBarController: UITabBarController {
         
         let friendsController = ContactsController(collectionViewLayout: layout)
         let recentMessagesNavController = UINavigationController(rootViewController: friendsController)
-        recentMessagesNavController.tabBarItem.title = "Recent"
-        recentMessagesNavController.tabBarItem.image = UIImage(named: "recent")
+        recentMessagesNavController.tabBarItem.title = "Conversas"
+        recentMessagesNavController.tabBarItem.image = UIImage(named: "buble")
         
         viewControllers = [
+            createDummyNavController(title: "Status", imageName: "buble"),
+            createDummyNavController(title: "Ligações", imageName: "calls"),
+            createDummyNavController(title: "Câmera", imageName: "camerabutton"),
             recentMessagesNavController,
-            createDummyNavController(title: "Calls", imageName: "calls"),
-            createDummyNavController(title: "Calls", imageName: "calls"),
-            createDummyNavController(title: "People", imageName: "people"),
-            createDummyNavController(title: "Calls", imageName: "calls")
+            createDummyNavController(title: "Ajustes", imageName: "settings")
         ]
+        let appearance = UITabBarItem.appearance()
+        
+        appearance.setTitleTextAttributes([NSAttributedString.Key.font :UIFont(name: "HelveticaNeue-Thin", size: 11) as Any], for: .normal)
+        self.selectedIndex = 3
     }
     
     private func createDummyNavController(title: String, imageName: String) -> UINavigationController {

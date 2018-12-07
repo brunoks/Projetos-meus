@@ -151,6 +151,7 @@ class ChatController: UITableViewController, NSFetchedResultsControllerDelegate 
         view.widthAnchor.constraint(equalToConstant: self.view.frame.width - 65).isActive = true
         view.imageprofile.setImage(UIImage(named: (friend?.profileImageName)!), for: .normal)
         view.profilename.setTitle(friend?.name, for: .normal)
+        view.profilename.addTarget(self, action: #selector(goToProfileUser), for: .touchUpInside)
         
         let rightBarButton = UIBarButtonItem(customView: view)
         self.navigationItem.rightBarButtonItem = rightBarButton
@@ -185,6 +186,7 @@ class ChatController: UITableViewController, NSFetchedResultsControllerDelegate 
     
     //  - Configuração da TableView
     private func configureTableView() {
+        navigationItem.largeTitleDisplayMode = .never
         self.navigationController?.navigationBar.backItem?.title = ""
         self.tableView.backgroundColor = UIColor(white: 0.93, alpha: 1.0)
         self.tableView.separatorStyle = .none

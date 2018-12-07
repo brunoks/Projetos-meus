@@ -127,8 +127,6 @@ class CustomTabBar: UIView {
         stackView.addArrangedSubview(cameraButton)
         stackView.addArrangedSubview(sendButton)
         stackView.addArrangedSubview(audioButton)
-        
-        //tabBarCustom.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.layoutMarginsGuide.bottomAnchor, trailing: self.trailingAnchor)
     
         messageContainer.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.layoutMarginsGuide.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0))
         

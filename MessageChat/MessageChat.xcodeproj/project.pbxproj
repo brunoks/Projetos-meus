@@ -28,6 +28,7 @@
 		CBECABB821AF48830051C532 /* Componentes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECABB721AF48830051C532 /* Componentes.swift */; };
 		F37A76FC21BAA64800D50AA1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A76FB21BAA64800D50AA1 /* TableViewController.swift */; };
 		F37A76FE21BAA69900D50AA1 /* TopProfileChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A76FD21BAA69900D50AA1 /* TopProfileChat.swift */; };
+		F37A770021BAF79E00D50AA1 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A76FF21BAF79E00D50AA1 /* SearchController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		CBECABB721AF48830051C532 /* Componentes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Componentes.swift; sourceTree = "<group>"; };
 		F37A76FB21BAA64800D50AA1 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		F37A76FD21BAA69900D50AA1 /* TopProfileChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopProfileChat.swift; sourceTree = "<group>"; };
+		F37A76FF21BAF79E00D50AA1 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 			children = (
 				CBECAB7C21AF45920051C532 /* ViewController.swift */,
 				CBECABAE21AF46DA0051C532 /* ContactsModelController.swift */,
+				F37A76FF21BAF79E00D50AA1 /* SearchController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				CB0048F221B20A4700576D0B /* UserProfileController.swift in Sources */,
 				CBECABB321AF47A90051C532 /* CustomTabBarController.swift in Sources */,
 				CBECABB121AF471C0051C532 /* ContactsCell.swift in Sources */,
+				F37A770021BAF79E00D50AA1 /* SearchController.swift in Sources */,
 				CB0048F621B20A8800576D0B /* OptionsViewCell.swift in Sources */,
 				CB98E75921B20C7300B06729 /* ChatController.swift in Sources */,
 				CBECAB7D21AF45920051C532 /* ViewController.swift in Sources */,
