@@ -13,23 +13,15 @@ class CustomTabBar: UIView {
     //  Variáveis
     let tabBarCustom: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+        view.backgroundColor = UIColor.groupTableViewBackground
         return view
     }()
     let messageContainer: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+        view.backgroundColor = UIColor.groupTableViewBackground
         return view
     }()
-    
-    let buttonContainer: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 15
-        view.layer.masksToBounds = true
-        view.isHidden = true
-        view.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1.0)
-        return view
-    }()
+
     
     let inputTextField: UITextField = {
         let textField = UITextField()
@@ -127,35 +119,37 @@ class CustomTabBar: UIView {
     //  - Configuração da TabBottomBar customizada
     //  - para atender diversos layouts
     private func configureTabBar() {
-        self.addSubview(tabBarCustom)
+        
         self.addSubview(messageContainer)
-        self.addSubview(stackView)
+        self.messageContainer.addSubview(stackView)
         messageContainer.addSubview(plusButton)
         stackView.addArrangedSubview(inputTextField)
         stackView.addArrangedSubview(cameraButton)
         stackView.addArrangedSubview(sendButton)
         stackView.addArrangedSubview(audioButton)
         
-        messageContainer.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor)
-
-        tabBarCustom.anchor(top: messageContainer.topAnchor, leading: messageContainer.leadingAnchor, bottom: self.bottomAnchor, trailing: messageContainer.trailingAnchor)
+        //tabBarCustom.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.layoutMarginsGuide.bottomAnchor, trailing: self.trailingAnchor)
+    
+        messageContainer.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.layoutMarginsGuide.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0))
         
         audioButton.anchorXY(centerX: nil, centerY: nil, top: nil, leading: nil, bottom: nil, trailing: nil, padding: .init(), size: .init(width: 30, height: 30))
         cameraButton.anchorXY(centerX: nil, centerY: nil, top: nil, leading: nil, bottom: nil, trailing: nil, padding: .init(), size: .init(width: 30, height: 30))
-        
-        
         sendButton.anchor(top: nil, leading: nil, bottom: nil, trailing: nil, padding: .init(), size: .init(width: 30, height: 30))
         
         plusButton.anchorXY(centerX: nil, centerY: messageContainer.centerYAnchor, top: nil, leading: messageContainer.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 0, left: 10, bottom: 0, right: 0), size: .init(width: 30, height: 30))
         
         stackView.anchorXY(centerX: nil, centerY: messageContainer.centerYAnchor, top: nil, leading: plusButton.trailingAnchor, bottom: nil, trailing: messageContainer.trailingAnchor, padding: .init(top: 0, left: 10, bottom: 0, right: 10), size: .init(width: 0, height: 30))
         
+      //---------------------------\\
         let topBorderView = UIView()
         topBorderView.backgroundColor = UIColor(white: 0.5, alpha: 0.3)
         messageContainer.addSubview(topBorderView)
         topBorderView.anchor(top: messageContainer.topAnchor, leading: messageContainer.leadingAnchor, bottom: nil, trailing: messageContainer.trailingAnchor, padding: .init(), size: .init(width: 0, height: 0.5))
     }
-
+    
+    override var intrinsicContentSize: CGSize {
+        return CGSize.zero
+    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

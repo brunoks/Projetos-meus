@@ -164,7 +164,6 @@ class ChatController: UITableViewController, NSFetchedResultsControllerDelegate 
     @objc func keyboardWillShow(_ notification: NSNotification) {
         let info = notification.userInfo!
         let keyboardSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
-        
         tableView.contentInset.bottom = keyboardSize
     }
     
