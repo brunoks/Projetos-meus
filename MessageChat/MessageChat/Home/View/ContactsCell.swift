@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactsCell: BaseCell {
+class ContactsCell: BaseCell<Message> {
     
     override var isHighlighted: Bool {
         didSet {
@@ -19,16 +19,16 @@ class ContactsCell: BaseCell {
         }
     }
     
-    var message: Message? {
+    override var item: Message! {
         didSet {
-            nameLabel.text = message?.friend?.name
-            if let profileImageName = message?.friend?.profileImageName {
+            nameLabel.text = item.friend?.name
+            if let profileImageName = item.friend?.profileImageName {
                 profileImageView.image = UIImage(named: profileImageName)
                 hasReadImageView.image = UIImage(named: profileImageName)
             }
-            messageLabel.text = message?.text
+            messageLabel.text = item.text
             
-            if let date = message?.date {
+            if let date = item.date {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "h:mm a"
                 let elapsedTimeInSeconds = Date().timeIntervalSince(date)
@@ -43,7 +43,7 @@ class ContactsCell: BaseCell {
                 
                 timeLabel.text = dateFormatter.string(from: date)
             }
-            if let smallProfile = message?.friend?.profileImageName {
+            if let smallProfile = item.friend?.profileImageName {
                 hasReadImageView.image = UIImage(named: smallProfile)
             }
         }
@@ -91,7 +91,14 @@ class ContactsCell: BaseCell {
         return imageView
     }()
     
-    override func setupViews() {
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViews()
+    }
+
+    
+    func setupViews() {
         addSubview(profileImageView)
         addSubview(dividerLineView)
         
@@ -118,6 +125,8 @@ class ContactsCell: BaseCell {
         
         NSLayoutConstraint.activate(constraints)
     }
+    
+    
     private func setupContainerView() {
         let containerView = UIView()
         addSubview(containerView)
@@ -147,19 +156,8 @@ class ContactsCell: BaseCell {
         hasReadImageView.anchorXY(centerX: nil, centerY: messageLabel.centerYAnchor, top: nil, leading: nil, bottom: nil, trailing: self.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 10), size: .init(width: 20, height: 20))
         
     }
-}
-
-class BaseCell: UICollectionViewCell {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
-    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    func setupViews() {
-        backgroundColor = UIColor.lightText
-    }
 }
-

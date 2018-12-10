@@ -12,11 +12,9 @@ import UIKit
 
 import UIKit
 import CoreData
-class ContactsController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class ContactsController: BaseTableViewController<ContactsCell, Message>, UISearchBarDelegate, UISearchResultsUpdating {
     
-    private let cellid = "cellid"
     
-    var messages: [Message] = []
     let searchController = SearchController(searchResultsController: nil)
     var filteredCandies = [Message]()
     
@@ -24,8 +22,8 @@ class ContactsController: UICollectionViewController, UICollectionViewDelegateFl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadData()
-        self.filteredCandies = self.messages
-        self.collectionView.reloadData()
+        tableView.reloadData()
+        self.filteredCandies = self.items
         self.tabBarController?.tabBar.isHidden = false
     }
     
@@ -50,9 +48,7 @@ class ContactsController: UICollectionViewController, UICollectionViewDelegateFl
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
-        collectionView?.backgroundColor = UIColor.white
-        collectionView?.alwaysBounceVertical = true
-        collectionView?.register(ContactsCell.self, forCellWithReuseIdentifier: cellid)
+        tableView?.backgroundColor = UIColor.white
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
@@ -63,41 +59,24 @@ class ContactsController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.messages.count
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 65
     }
     
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 65)
-    }
-    
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellid, for: indexPath) as! ContactsCell
-        cell.message = messages[indexPath.row]
-        return cell
-    }
-    
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = ChatController()
-        controller.friend = messages[indexPath.row].friend
+        controller.friend = items[indexPath.row].friend
         //        controller.hidesBottomBarWhenPushed = false
         navigationController?.pushViewController(controller, animated: true)
     }
-}
-
-extension ContactsController: UISearchResultsUpdating {
+    
+    
     
     
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
-
         self.filterContentForSearchText(searchController.searchBar.text!)
-        
     }
     
     
@@ -108,7 +87,7 @@ extension ContactsController: UISearchResultsUpdating {
     
     
     func filterContentForSearchText(_ searchText: String) {
-        self.messages = self.filteredCandies.filter({( message : Message) -> Bool in
+        self.items = self.filteredCandies.filter({( message : Message) -> Bool in
             
             if searchBarIsEmpty() {
                 return true
@@ -117,7 +96,7 @@ extension ContactsController: UISearchResultsUpdating {
             }
         })
         
-        collectionView.reloadData()
+//        tableView.reloadData()
     }
     
     

@@ -125,7 +125,7 @@ extension ContactsController {
         if let context = delegate?.persistentContainer.viewContext {
             
             if let friends = fetchFriends() {
-                messages = [Message]()
+                items = [Message]()
                 for friend in friends {
                     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Message")
                     fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
@@ -133,12 +133,12 @@ extension ContactsController {
                     fetchRequest.fetchLimit = 1
                     do {
                         let fetch = try context.fetch(fetchRequest) as! [Message]
-                        messages.append(contentsOf: fetch)
+                        items.append(contentsOf: fetch)
                     } catch let err {
                         print(err)
                     }
                 }
-                messages = messages.sorted(by:  {$0.date?.compare($1.date!) == .orderedDescending })
+                items = items.sorted(by:  {$0.date?.compare($1.date!) == .orderedDescending })
             }
         }
     }

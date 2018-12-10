@@ -29,6 +29,8 @@
 		F37A76FC21BAA64800D50AA1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A76FB21BAA64800D50AA1 /* TableViewController.swift */; };
 		F37A76FE21BAA69900D50AA1 /* TopProfileChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A76FD21BAA69900D50AA1 /* TopProfileChat.swift */; };
 		F37A770021BAF79E00D50AA1 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A76FF21BAF79E00D50AA1 /* SearchController.swift */; };
+		F383FEED21BECF290098B8C3 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F383FEEC21BECF290098B8C3 /* BaseTableViewController.swift */; };
+		F383FEF021BECF700098B8C3 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F383FEEF21BECF700098B8C3 /* BaseCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		F37A76FB21BAA64800D50AA1 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		F37A76FD21BAA69900D50AA1 /* TopProfileChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopProfileChat.swift; sourceTree = "<group>"; };
 		F37A76FF21BAF79E00D50AA1 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		F383FEEC21BECF290098B8C3 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		F383FEEF21BECF700098B8C3 /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +180,7 @@
 				CBECABBB21AF4A290051C532 /* Chat */,
 				CBECABB621AF485C0051C532 /* Componentes */,
 				CBECABAB21AF46090051C532 /* Home */,
+				F383FEEB21BECF050098B8C3 /* BaseTableViewController */,
 				CBECAB7A21AF45920051C532 /* AppDelegate.swift */,
 				CBECAB7E21AF45920051C532 /* Main.storyboard */,
 				CBECAB8421AF45950051C532 /* Assets.xcassets */,
@@ -248,6 +253,31 @@
 				CB98E75721B20C6000B06729 /* Controller */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		F383FEEB21BECF050098B8C3 /* BaseTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F383FEF121BECF950098B8C3 /* Controller */,
+				F383FEEE21BECF500098B8C3 /* View */,
+			);
+			path = BaseTableViewController;
+			sourceTree = "<group>";
+		};
+		F383FEEE21BECF500098B8C3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F383FEEF21BECF700098B8C3 /* BaseCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F383FEF121BECF950098B8C3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F383FEEC21BECF290098B8C3 /* BaseTableViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,6 +411,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F383FEF021BECF700098B8C3 /* BaseCell.swift in Sources */,
+				F383FEED21BECF290098B8C3 /* BaseTableViewController.swift in Sources */,
 				CB0048F421B20A6500576D0B /* ProfileViewCell.swift in Sources */,
 				CBECABAF21AF46DA0051C532 /* ContactsModelController.swift in Sources */,
 				CBD9198B21B2B12C00F49B6B /* CustomTabBar.swift in Sources */,
