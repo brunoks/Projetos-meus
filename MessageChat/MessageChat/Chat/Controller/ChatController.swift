@@ -108,10 +108,10 @@ class ChatController: UITableViewController, NSFetchedResultsControllerDelegate 
     }()
     
     
+    
     //  - Variáveis para uso da TableView
     var dataTable: [[Message]] = [[]]
     var viewDate = FormatHeaderViewDate()
-    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -141,6 +141,7 @@ class ChatController: UITableViewController, NSFetchedResultsControllerDelegate 
         configureTableView()
         
         configureTopProfile()
+        
     }
     
     

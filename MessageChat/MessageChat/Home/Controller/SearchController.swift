@@ -18,7 +18,22 @@ class SearchController: UISearchController {
         // Setup the Search Controller
         obscuresBackgroundDuringPresentation = false
         searchBar.placeholder = "Pesquisar Contatos"
-        dimsBackgroundDuringPresentation = false
+        dimsBackgroundDuringPresentation = true
+        
+        for subView in searchBar.subviews  {
+            for subsubView in subView.subviews  {
+                if let textField = subsubView as? UITextField {
+                    var bounds: CGRect
+                    bounds = textField.frame
+                    bounds.size.height = 80 //(set height whatever you want)
+                    textField.bounds = bounds
+                    textField.textColor = UIColor.white
+                    //                    textField.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+                    textField.backgroundColor = .darkGray
+                    //                    textField.font = UIFont.systemFontOfSize(20)
+                }
+            }
+        }
         
     }
     

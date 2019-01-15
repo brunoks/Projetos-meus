@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChatMessageCell: BaseCell<Message> {
+class ChatMessageCell: UITableViewCell {
     let messageLabel = UILabel()
     let bubblebackgroundView: UIView = {
         let view = UIView()
@@ -42,16 +42,16 @@ class ChatMessageCell: BaseCell<Message> {
     //
     //    static let bubbleImage = UIImage(named: "bubble")?.resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26)).withRenderingMode(.alwaysTemplate)
     
-    override var item: Message! {
+    var message: Message! {
         didSet {
             
-            bubblebackgroundView.backgroundColor = item.isSender ? UIColor(red: 215/255, green: 222/255, blue: 232/255, alpha: 1) : UIColor(white: 1.0, alpha: 1)
+            bubblebackgroundView.backgroundColor = message.isSender ? UIColor(red: 215/255, green: 222/255, blue: 232/255, alpha: 1) : UIColor(white: 1.0, alpha: 1)
             
-            messageLabel.text = item.text
+            messageLabel.text = message.text
             
-            timeLabel.text = formatDate.string(from: item.date!)
+            timeLabel.text = formatDate.string(from: message.date!)
             
-            if item.isSender {
+            if message.isSender {
                 leadingConstraint.isActive = false
                 trailingConstraint.isActive = true
             } else {
@@ -90,7 +90,7 @@ class ChatMessageCell: BaseCell<Message> {
         self.selectedBackgroundView = UIView()
         
         if isSelected {
-            self.bubblebackgroundView.backgroundColor = item.isSender ? UIColor(red: 215/255, green: 222/255, blue: 232/255, alpha: 1) : .white
+            self.bubblebackgroundView.backgroundColor = message.isSender ? UIColor(red: 215/255, green: 222/255, blue: 232/255, alpha: 1) : .white
         }
     }
     

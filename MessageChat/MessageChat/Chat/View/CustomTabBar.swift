@@ -31,7 +31,6 @@ class CustomTabBar: UIView {
         textField.layer.borderWidth = 1
         textField.backgroundColor = .white
         textField.borderStyle = .roundedRect
-        textField.placeholder = "Enter message..."
         return textField
     }()
     let plusButton: UIButton = {
